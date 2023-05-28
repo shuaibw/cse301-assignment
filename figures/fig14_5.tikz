@@ -1,0 +1,15 @@
+\begin{tikzpicture}
+\pgfmathsetmacro{\cubex}{3}
+\pgfmathsetmacro{\cubey}{1.5}
+\pgfmathsetmacro{\cubez}{1.5}
+\node at (-\cubex/6, -\cubey/1.8) {1};
+\node at (-\cubex/6, -.1) {2};
+\node at (-2, -.1) {3};
+\node at (-2, -\cubey/1.8) {4};
+\draw[blue,fill=gray,opacity=0.3] (-\cubex,-\cubey/2,0) -- ++(\cubex,0,0) -- ++(0,0,-\cubez) -- ++(-\cubex,0,0) -- cycle;
+\draw[blue,fill=gray,opacity=0.3] (-\cubex/2,0,0) -- ++(0,-\cubey,0) -- ++(0,0,-\cubez) -- ++(0,\cubey,0) -- cycle;
+\draw[blue,fill=gray,opacity=0.5] (-\cubex,0,-\cubez/2) -- ++(\cubex,0,0) -- ++(0,-\cubey,0) -- ++(-\cubex,0,0) -- cycle;
+\draw[blue, dashed] (-\cubex/2, -\cubey/2, 0) -- ++(0,0,-\cubez);
+\draw[black, densely dotted] (-\cubex/2, 0, -\cubez/2) -- ++(0,-\cubey,0);
+\draw[black, densely dotted] (-\cubex, -\cubey/2, -\cubez/2) -- ++(\cubex,0,0);
+\end{tikzpicture}

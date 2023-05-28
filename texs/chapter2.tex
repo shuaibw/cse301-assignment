@@ -1,0 +1,281 @@
+\begin{center}
+    {\huge Chapter 2}
+\end{center}
+\section*{Problem 11}
+\begin{align*}
+      & \sum_{0\leq k < n} (a_{k+1}-a_k)b_k                                                     \\
+    = & \sum_{0\leq k < n} (a_{k+1}b_k - a_k b_k)                                               \\
+    = & \sum_{0\leq k < n} a_{k+1}b_k -\sum_{0\leq k < n} a_k b_k                               \\
+    = & \sum_{0\leq k < n} a_{k+1}b_k - \sum_{1\leq k < n + 1} a_kb_k - (a_0b_0-a_nb_n)         \\
+    = & \sum_{0\leq k < n} a_{k+1}b_k - \sum_{1\leq k+1 < n + 1} a_{k+1}b_{k+1} + a_nb_n-a_0b_0 \\
+    = & \sum_{0\leq k < n} a_{k+1}b_k - \sum_{0\leq k < n} a_{k+1}b_{k+1} + a_nb_n-a_0b_0       \\
+    = & \sum_{0\leq k < n} (a_{k+1}b_k - a_{k+1}b_{k+1}) + a_nb_n-a_0b_0                        \\
+    = & \;a_nb_n-a_0b_0 - \sum_{0 \leq k < n} {a_{k+1}(b_{k+1}-b_k)}
+\end{align*}
+\section*{Problem 12}
+If we can find an inverse function of $p(k)$ whose domain is defined for the set of all integers, then the range of $p(k)$ will contain the set of all integers. Let,
+\begin{align*}
+    p(k)     & = k + (-1)^kc = y \stampeq \label{eq:12_1}     \\
+    \implies & = y+c = k+ \underbrace{\left(1+(-1)^k\right)}c \\
+\end{align*}
+Here,\[
+    \left(1+(-1)^k\right) = \begin{dcases*}
+        0 & $k$ odd  \\
+        2 & $k$ even
+    \end{dcases*}
+\]
+So, $y+c$ and $k$ have the same parity: they are either both even or both odd. So we can write: $(-1)^{y+c} = (-1)^k$. From \eqref{eq:12_1}:
+\begin{align*}
+    y          & = k + (-1)^k c    \\
+    \implies y & = k + (-1)^{y+c}c \\
+    \implies k & = y-(-1)^{y+c}c
+\end{align*}
+Therefore, $q(y) = y-(-1)^{y+c}c$ is defined for the set of all integers. Hence the range of $p(k)$ contains the set of all integers.
+\section*{Problem 14}
+\begin{align*}
+    S_n & = \sum_{k=1}^{n} k2^k                  \\
+        & = \sum_{k=1}^n \sum_{j=1}^k 1\times2^k \\
+        & =\sum_{j=1}^n \sum_{k=j}^n 2^k         \\
+        & =\sum_{j=1}^n 2^{n+1}-2^j              \\
+        & =n2^{n+1}-\sum_{j=1}^n 2^j             \\
+        & =n2^{n+1}-(2^{n+1}-2)
+\end{align*}
+\section*{Problem 19}
+Here,
+\begin{align*}
+    a  2                                                                               \\ b_n &= n\\ c_n &= 3\cdot n!\\
+    \therefore s_n & = \frac{a_{n-1}a_{n-2}\ldots a_1}{b_nb_{n-1}\ldots b_2}\times s_1 \\
+                   & =\frac{2^{n-1}}{n!} \qquad \text{[Letting $s_1=1$]}
+\end{align*}
+Now,
+\begin{align*}
+             & s_na_nT_n = s_1b_1T_0 + \sum_{k=1}^{n} s_kc_k                                         \\
+    \implies & \frac{2^{n-1}}{n!}\cdot 2\cdot T_n= 5+\sum_{k=1}^n \frac{2^{k-1}}{k!}\times 3\cdot k! \\
+    \implies & \frac{2^n}{n!}T_n = 5 + 3\sum_{k=1}^n{2^{k-1}}                                        \\
+    \implies & \frac{2^n}{n!}T_n = 5 + 3 \times (2^n - 1)                                            \\
+    \implies & T_n = \frac{n!}{2^n} (2 + 3\times 2^n)                                                \\
+    \implies & T_n = \frac{n!}{2^{n-1}} + 3n!
+\end{align*}
+
+\section*{Problem 20}
+\begin{align*}
+     & S_n = \sum_{k=0}^n kH_k \\
+\end{align*}
+Here,
+\begin{align*}
+    S_{n+1} & = \sum_{k=0}^{n+1} kH_k                      \\
+            & = \sum_{k=0}^n kH_k + (n+1)H_{n+1}           \\
+            & =S_n + (n+1)H_{n+1} \stampeq \label{eq:20_1}
+\end{align*}
+Again,
+\begin{align*}
+    S_{n+1} & = \sum_{k=0}^{n+1} kH_k                                  \\
+            & =\sum_{1\leq k \leq n+1} kH_k + 0\times H_0              \\
+            & =\sum_{1\leq k+1 \leq n+1} (k+1)H_{k+1}                  \\
+            & =\sum_{0\leq k \leq n} (k+1)(H_k + \frac{1}{k+1})        \\
+            & =\sum_{k=0}^n kH_k + H_k + 1                             \\
+            & =S_n + \sum_{k=0}^n H_k + (n+1) \stampeq \label{eq:20_2}
+\end{align*}
+
+From \eqref{eq:20_1} and \eqref{eq:20_2},
+\begin{align*}
+             & S_n + (n+1)H_{n+1} = S_n + \sum_{k=0}^n H_k + (n+1) \\
+    \implies & \sum_{k=0}^n H_k = (n+1)(H_{n+1}-1)
+\end{align*}
+\clearpage
+\section*{Problem 21}
+\[
+    S_n = \sum_{0\leq k \leq n} (-1)^{n-k}\\
+\]
+\begin{align*}
+    S_{n+1} & =\sum_{0\leq k \leq n+1} (-1)^{n-k}                 \\
+            & = (-1)^{n-(n+1)} + \sum_{0\leq k \leq n} (-1)^{n-k} \\
+            & = -1 + S_n \stampeq \label{eq:21_1}
+\end{align*}
+\begin{align*}
+    S_{n+1} & =\sum_{0\leq k \leq n+1} (-1)^{n-k}              \\
+            & =(-1)^{n-0} + \sum_{1\leq k \leq n+1} (-1)^{n-k} \\
+            & =(-1)^n + \sum_{0\leq k \leq n} (-1)^{n-(k+1)}   \\
+            & =(-1)^n -\sum_{0_\leq k \leq n}(-1)^{n-k}        \\
+            & =(-1)^n - S_n \stampeq \label{eq:21_2}
+\end{align*}
+From \eqref{eq:21_1} and \eqref{eq:21_2},
+\begin{align*}
+    -1 + S_n     & = (-1)^n -S_n                                 \\
+    \implies S_n & = \frac{1+(-1)^n}{2} \stampeq \label{eq:21_3}
+\end{align*}
+Again,
+\[
+    T_n = \sum_{0 \leq k \leq n} (-1)^{n-k}k
+\]
+\begin{align*}
+    T_{n+1} & = \sum_{0 \leq k \leq n+1} (-1)^{n-k}k                    \\
+            & =(-1)^{n-(n+1)}(n+1) + \sum_{0 \leq k \leq n} (-1)^{n-k}k \\
+            & =-(n+1) + T_n \stampeq \label{eq:21_4}
+\end{align*}
+\begin{align*}
+    T_{n+1} & = \sum_{0 \leq k \leq n+1} (-1)^{n-k}k                                \\
+            & =(-1)^{n-0}\times 0 + \sum_{1 \leq k \leq n+1}(-1)^{n-k}k             \\
+            & =0 + \sum_{0 \leq k \leq n} (-1)^{n-(k+1)}(k+1)                       \\
+            & =-\sum_{0\leq k \leq n} (-1)^{n-k}(k+1)                               \\
+            & =-\sum_{0\leq k \leq n} (-1)^{n-k}k - \sum_{0\leq k \leq n}(-1)^{n-k} \\
+            & =-T_n-S_n \stampeq \label{eq:21_5}
+\end{align*}
+From \eqref{eq:21_4} and \eqref{eq:21_5},
+\begin{align*}
+    -(n+1) + T_n & = -T_n-S_n                                   \\
+    \implies T_n & = \frac{1+n-S_n}{2} \stampeq \label{eq:21_6}
+\end{align*}
+Finally,
+\[
+    U_n = \sum_{0 \leq k \leq n} (-1)^{n-k}k^2
+\]
+\begin{align*}
+    U_{n+1} & = \sum_{0 \leq k \leq n+1} (-1)^{n-k}k^2         \\
+            & = -(n+1)^2 + \sum_{0 \leq k \leq n}(-1)^{n-k}k^2 \\
+            & = -(n+1)^2 + U_n \stampeq \label{eq21:7}
+\end{align*}
+\begin{align*}
+    U_{n+1} & = \sum_{0 \leq k \leq n+1} (-1)^{n-k}k^2                                                                     \\
+            & = 0 + \sum_{1 \leq k \leq n+1}(-1)^{n-k}k^2                                                                  \\
+            & = \sum_{0 \leq k \leq n}(-1)^{n-(k+1)}(k+1)^2                                                                \\
+            & = -\sum_{0 \leq k \leq n}(-1)^{n-k}(k^2 + 2k + 1)                                                            \\
+            & = -\sum_{0 \leq k \leq n}(-1)^{n-k}k^2 -2\sum_{0 \leq k \leq n}(-1)^{n-k}k -\sum_{0 \leq k \leq n}(-1)^{n-k} \\
+            & = -U_n - 2T_n - S_n \stampeq \label{eq:21_8}
+\end{align*}
+
+From \eqref{eq21:7} and \eqref{eq:21_8},
+\begin{align*}
+    -(n+1)^2 & + U_n = -U_n - 2T_n - S_n                                    \\
+    \implies & U_n = \frac{(n+1)^2 - 2T_n -S_n}{2} \stampeq \label{eq:21_9}
+\end{align*}
+
+\section*{Problem 22}
+Proof of \textit{Lagrange's Identity:}
+\[
+    \sum_{1\leq j < k \leq n} (a_jb_k-a_kb_j)^2 = \left(\sum_{k=1}^n {a_k}^2\right) \left(\sum_{k=1}^n {b_k}^2\right) - \left(\sum_{k=1}^n {a_kb_k}^2\right)
+\]
+Let,
+\begin{align*}
+    S             & = \sum_{1\leq j < k \leq n} (a_jb_k-a_kb_j)^2 \quad \scalebox{0.2}{\tikzfig{triup}}                                                 \\
+    S             & = \sum_{1\leq k < j \leq n} (a_kb_j-a_jb_k)^2 \quad \scalebox{0.2}{\tikzfig{trilow}} \qquad \text{[Swapping $j \leftrightarrow k$]} \\
+    \therefore 2S & = \sum_{1\leq j,k \leq n} (a_kb_j-a_jb_k)^2 - \sum_{1\leq j=k \leq n} (a_kb_j-a_jb_k)^2 \quad \scalebox{0.2}{\tikzfig{triboth}}     \\
+                  & = \sum_{1\leq j,k \leq n} (a_kb_j-a_jb_k)^2 -0                                                                                      \\
+                  & = \sum_{j} \sum_{k}(a_k^2b_j^2 - 2a_ja_kb_jb_k + a_j^2b_k^2)[1\leq j \leq n][1\leq k \leq n]                                        \\
+    \begin{split}
+        &=\sum_{j}b_j^2[1\leq j \leq n]\sum_{k}a_k^2[1\leq k \leq n]-2\sum_{j}a_jb_j[1\leq j \leq n]\sum_{k}a_kb_k[1\leq k \leq n] \\
+        &+ \sum_{j}a_j^2[1\leq j \leq n]\sum_{k}b_k^2[1\leq k \leq n]
+    \end{split}                          \\
+    \begin{split}
+        &=\sum_{k}b_k^2[1\leq k \leq n]\sum_{k}a_k^2[1\leq k \leq n]-2\sum_{k}a_kb_k[1\leq k \leq n]\sum_{k}a_kb_k[1\leq k \leq n] \\
+        &+ \sum_{k}a_k^2[1\leq k \leq n]\sum_{k}b_k^2[1\leq k \leq n]
+    \end{split}
+\end{align*}
+\begin{align*}
+             & =\sum_{1\leq k \leq n}b_k^2\sum_{1\leq k \leq n}a_k^2-2\sum_{1\leq k \leq n}a_kb_k\sum_{1\leq k \leq n}a_kb_k + \sum_{1\leq k \leq n}a_k^2\sum_{1\leq k \leq n}b_k^2 \\
+             & =2\left(\sum_{1\leq k \leq n}a_k^2\right)\left(\sum_{1\leq k \leq n}b_k^2\right)-2\left(\sum_{1\leq k \leq n}a_kb_k\right)^2                                         \\
+    \implies & S = \left(\sum_{1\leq k \leq n}a_k^2\right)\left(\sum_{1\leq k \leq n}b_k^2\right)-\left(\sum_{1\leq k \leq n}a_kb_k\right)^2
+\end{align*}
+With a similar approach, we can prove:
+\begin{align*}
+    \sum_{1\leq j < k \leq n} (a_jb_k-a_kb_j)(A_jB_k-A_kB_j) = \left(\sum_{1\leq k \leq n}a_kA_k\right)\left(\sum_{1\leq k \leq n}b_kB_k\right)-\left(\sum_{1\leq k \leq n}a_kB_k\right)\left(\sum_{1\leq k \leq n}A_kb_k\right)
+\end{align*}
+
+\section*{Problem 23}
+\begin{align*}
+    S & = \sum_{k=1}^{n} \frac{2k+1}{k(k+1)}                                                      \\
+      & =\sum_{k=1}^{n} \left(\frac{1}{k} + \frac{1}{k+1}\right)                                  \\
+      & = \sum_{k=1}^{n} \frac{1}{k} + \sum_{k=1}^{n} \frac{1}{k+1}                               \\
+      & = H_n + \sum_{1\leq k-1 \leq n} \frac{1}{(k-1)+1} \quad \text{Replace $k\rightarrow k-1$} \\
+      & = H_n + \sum_{2\leq k \leq n+1} \frac{1}{k}                                               \\
+      & = H_n + \sum_{1\leq k \leq n} \frac{1}{k} - 1 + \frac{1}{n+1}                             \\
+      & = 2H_n - 1 + \frac{1}{n+1}
+\end{align*}
+\section*{Problem 24}
+\begin{align*}
+    S & = \sum_{0 \leq k < n} \frac{H_k}{(k+1)(k+2)}                                                                                                                                                                                                                                                                      \\
+      & = \sum_{0 \leq k \leq n-1} H_k\left(\frac{1}{k+1}-\frac{1}{k+2}\right)                                                                                                                                                                                                                                            \\
+      & = 0\cdot\left(\frac{1}{1} - \frac{1}{2}\right) + \left(\frac{1}{1}\right)\cdot\left(\frac{1}{2} - \frac{1}{3}\right) + \left(\frac{1}{1} + \frac{1}{2}\right)\cdot\left(\frac{1}{3} - \frac{1}{4}\right)+\left(\frac{1}{1} + \frac{1}{2} + \frac{1}{3}\right)\cdot\left(\frac{1}{4} - \frac{1}{5}\right) + \ldots \\
+    \begin{split}
+        &= \frac{1}{1}\left(\frac{1}{2} - \frac{1}{3} + \frac{1}{3} - \frac{1}{4} + \frac{1}{4} - \frac{1}{5} + \ldots + \frac{1}{n}-\frac{1}{n+1}\right)\\
+        &+\frac{1}{2}\left(\frac{1}{3} - \frac{1}{4} + \frac{1}{4} - \frac{1}{5} + \ldots + \frac{1}{n}-\frac{1}{n+1}\right)\\
+        &+\frac{1}{3}\left(\frac{1}{4} - \frac{1}{5} + \ldots + \frac{1}{n}-\frac{1}{n+1}\right)\\
+        &+\cdots\\
+        &+\frac{1}{n-1}\left(\frac{1}{n}-\frac{1}{n+1}\right)
+    \end{split}                                                                                                                                                                      \\
+      & = \frac{1}{1}\left(\frac{1}{2}-\frac{1}{n+1}\right)
+    +\frac{1}{2}\left(\frac{1}{3}-\frac{1}{n+1}\right)
+    +\frac{1}{3}\left(\frac{1}{4} -\frac{1}{n+1}\right)
+    +\cdots +\frac{1}{n-1}\left(\frac{1}{n}-\frac{1}{n+1}\right)                                                                                                                                                                                                                                                          \\
+      & = \left(\frac{1}{1\cdot 2}+ \frac{1}{2\cdot 3}+ \frac{1}{3\cdot 4} + \ldots + \frac{1}{(n-1)\cdot n}\right) - \frac{1}{n+1}\left(\frac{1}{1} + \frac{1}{2} + \frac{1}{3} + \cdots + \frac{1}{n-1}\right)                                                                                                          \\
+      & =\sum_{1 \leq k \leq n-1} \frac{1}{k(k+1)}  - \frac{1}{n+1} \left(H_n-\frac{1}{n}\right)                                                                                                                                                                                                                          \\
+      & =\sum_{1 \leq k \leq n-1} \left(\frac{1}{k}-\frac{1}{k+1}\right)  - \frac{1}{n+1} \left(H_n-\frac{1}{n}\right)                                                                                                                                                                                                    \\
+      & =\left(\sum_{1 \leq k \leq n}\frac{1}{k} - \frac{1}{n}\right) - \left(\sum_{1 \leq k-1 \leq n-1}\frac{1}{(k-1)+1}\right) - \frac{1}{n+1} \left(H_n-\frac{1}{n}\right)                                                                                                                                             \\
+      & =\left(H_n - \frac{1}{n}\right) - \left(\sum_{2 \leq k \leq n}\frac{1}{k}\right)- \frac{1}{n+1} \left(H_n-\frac{1}{n}\right)                                                                                                                                                                                      \\
+      & =\left(H_n - \frac{1}{n}\right) - \left(\sum_{1 \leq k \leq n}\frac{1}{k}-1\right)- \frac{1}{n+1} \left(H_n-\frac{1}{n}\right)                                                                                                                                                                                    \\
+      & =\left(H_n - \frac{1}{n} -H_n + 1\right)- \frac{1}{n+1} \left(H_n-\frac{1}{n}\right)                                                                                                                                                                                                                              \\
+      & =1-\frac{1}{n}+\frac{1}{n(n+1)}-\frac{H_n}{n+1}                                                                                                                                                                                                                                                                   \\
+      & =1-\frac{1}{n+1}-\frac{H_n}{n+1}                                                                                                                                                                                                                                                                                  \\
+      & =1-\frac{H_n+1}{n+1}
+\end{align*}
+\section*{Bonus Problem}
+This stemmed from a failed attempt to Problem 24.
+\begin{align*}
+    S & = 0\cdot\left(\frac{1}{1} - \frac{1}{2}\right) + \frac{1}{1}\cdot\left(\frac{1}{2} - \frac{1}{3}\right) + \frac{1}{2}\cdot\left(\frac{1}{3} - \frac{1}{4}\right)+\frac{1}{3}\cdot\left(\frac{1}{4} - \frac{1}{5}\right) + \ldots \\
+      & = 0 + \frac{1}{1\cdot 2} - \frac{1}{1\cdot 3} + \frac{1}{2\cdot 3} - \frac{1}{2\cdot 4} + \frac{1}{3\cdot 4} - \frac{1}{3\cdot 5} + \ldots                                                                                       \\
+      & = \left(\frac{1}{1\cdot 2}+ \frac{1}{2\cdot 3}+ \frac{1}{3\cdot 4} + \ldots\right) - \left(\frac{1}{1\cdot 3} +\frac{1}{2\cdot 4} +\frac{1}{3\cdot 5} + \ldots \right)                                                           \\
+      & =\sum_{1 \leq k < n} \frac{1}{k(k+1)} - \sum_{1 \leq k < n} \frac{1}{k(k+2)}                                                                                                                                                     \\
+      & =\sum_{1 \leq k < n}\frac{1}{k(k+1)(k+2)}                                                                                                                                                                                        \\
+      & =\sum_{1 \leq k < n}\left(\frac{1}{2k}-\frac{1}{k+1} + \frac{1}{2(k+2)}\right)                                                                                                                                                   \\
+      & =\frac{1}{2}\left(\sum_{1 \leq k \leq n}\frac{1}{k} - \frac{1}{n}\right) - \left(\sum_{1 \leq k-1 < n}\frac{1}{(k-1)+1}\right) + \frac{1}{2}\left(\sum_{1 \leq k-2 < n}\frac{1}{(k-2)+2}\right)                                  \\
+      & =\frac{1}{2}\left(H_n - \frac{1}{n}\right) - \left(\sum_{2 \leq k \leq n}\frac{1}{k}\right) + \frac{1}{2}\left(\sum_{3 \leq k \leq n+1}\frac{1}{k}\right)                                                                        \\
+      & =\frac{1}{2}\left(H_n - \frac{1}{n}\right) - \left(\sum_{1 \leq k \leq n}\frac{1}{k}-1\right) + \frac{1}{2}\left(\sum_{1 \leq k \leq n}\frac{1}{k} + \frac{1}{n+1} - 1 - \frac{1}{2}\right)                                      \\
+      & =\frac{1}{2}\left(H_n - \frac{1}{n}\right) - \left(H_n-1\right) + \frac{1}{2}\left(H_n + \frac{1}{n+1} - 1 - \frac{1}{2}\right)                                                                                                  \\
+      & =1-\frac{1}{2n} + \frac{1}{2(n+1)} - \frac{3}{4}                                                                                                                                                                                 \\
+      & =\frac{1}{4}-\frac{1}{2n(n+1)}
+\end{align*}
+
+\section*{Problem 25}
+\begin{alignat*}{3}
+     & \text{Distributive Law}\qquad & \sum_{k \in \mathrm{K}} ca_k = c\sum_{k \in \mathrm{K}} a_k                                    & \longleftrightarrow \prod_{k \in \mathrm{K}}a_k^c = \left(\prod_{k \in \mathrm{K}}a_k\right)^c                                          \\
+     & \text{Associative Law}\qquad  & \sum_{k \in \mathrm{K}} (a_k + b_k) = \sum_{k \in \mathrm{K}}a_k + \sum_{k \in \mathrm{K}} b_k & \longleftrightarrow \prod_{k \in \mathrm{K}}(a_kb_k) = \left(\prod_{k \in \mathrm{K}}a_k\right)\left(\prod_{k \in \mathrm{K}}b_k\right) \\
+     & \text{Commutative Law}        & \sum_{k \in \mathrm{K}}a_k = \sum_{p(k) \in \mathrm{K}} a_{p(k)}                               & \longleftrightarrow \prod_{k \in \mathrm{K}}a_k = \prod_{p(k) \in \mathrm{K}} a_{p(k)}                                                  \\
+     & \text{Iversonian Notation}    & \sum_{k \in \mathrm{K}}a_k = \sum_{k}a_k[k\in \mathrm{K}]                                      & \longleftrightarrow \prod_{k\in \mathrm{K}}a_k = \prod_{k}{a_k}^{[k \in \mathrm{K}]}
+\end{alignat*}
+\clearpage
+
+\section*{Problem 26}
+Let,
+\begin{align*}
+    P              & = \prod_{1\leq j \leq k \leq n} a_ja_k \quad \scalebox{0.2}{\tikzfig{triup}}                                                                                                                 \\
+    P              & = \prod_{1\leq k \leq j \leq n} a_ka_j \quad \scalebox{0.2}{\tikzfig{trilow}} \qquad j\leftrightarrow k                                                                                      \\
+    \therefore P^2 & = \left(\prod_{1\leq j,k \leq n}a_ja_k\right)\left(\prod_{1\leq j=k \leq n}a_ja_k\right) \quad \scalebox{0.2}{\tikzfig{tribothfull}} \quad \text{[ Diagonal elements are multiplied twice ]} \\
+                   & =\left(\prod_{1\leq j,k \leq n}a_ja_k\right)\left(\prod_{1\leq k \leq n}a_k^2\right)                                                                                                         \\
+\end{align*}
+The left product could be though of as multiplying each elements of the following matrix:
+\[
+    \begin{bmatrix}
+        a_1a_1 & a_1a_2 & a_1a_3 & \dots  & a_1a_n \\
+        a_2a_1 & a_2a_2 & a_2a_3 & \dots  & a_2a_n \\
+        a_3a_1 & a_3a_2 & a_3a_3 & \dots  & a_3a_n \\
+        \vdots & \vdots & \vdots & \ddots & \vdots \\
+        a_na_1 & a_na_2 & a_na_3 & \dots  & a_na_n
+    \end{bmatrix}
+\]
+Each element $a_k$ shows up $2n$ times ($n$ times in one row and $n$ times in one column). After multiplying all the elements, We would end up with: $a_1^{2n}a_2^{2n}\ldots a_n^{2n} = \prod\limits_{1\leq k \leq n}a_k^{2n} = \left(\prod\limits_{1\leq k \leq n}a_k^{n}\right)^2$
+\begin{align*}
+    \therefore P^2 & = \left(\prod_{1\leq k \leq n}a_k^{n}\right)^2\left(\prod_{1\leq k \leq n}a_k\right)^2 \\
+    \implies P     & = \left(\prod_{1\leq k \leq n}a_k^{n}\right)\left(\prod_{1\leq k \leq n}a_k\right)     \\
+                   & = \left(\prod_{1\leq k \leq n}a_k\right)^n\left(\prod_{1\leq k \leq n}a_k\right)^1     \\
+                   & =\left(\prod_{1\leq k \leq n}a_k\right)^{n+1}
+\end{align*}
+\clearpage
+\section*{Problem 29}
+\begin{align*}
+    S & = \sum_{1\leq k \leq n} \frac{(-1)^k k}{4k^2-1}                                                                                                                                                                                                                                                                          \\
+      & = \sum_{1\leq k \leq n} \frac{(-1)^k k}{(2k-1)(2k+1)}                                                                                                                                                                                                                                                                    \\
+      & = \frac{1}{4}\sum_{1\leq k \leq n} (-1)^k \left(\frac{1}{2k-1} + \frac{1}{2k+1}\right)                                                                                                                                                                                                                                   \\
+      & =\frac{1}{4}\left[-\left(\frac{1}{1}+\frac{1}{3}\right) + \left(\frac{1}{3}+\frac{1}{5}\right)-\left(\frac{1}{5}+\frac{1}{7}\right) + \left(\frac{1}{7}+\frac{1}{9}\right) - \ldots + (-1)^n \left(\frac{1}{2n-1}+\frac{1}{2n+1}\right)\right]                                                                           \\
+      & =\frac{1}{4}\left[-\left(\frac{1}{1}+\cancel{\frac{1}{3}}\right) + \left(\cancel{\frac{1}{3}}+\cancel{\frac{1}{5}}\right)-\left(\cancel{\frac{1}{5}}+\cancel{\frac{1}{7}}\right) + \left(\cancel{\frac{1}{7}}+\cancel{\frac{1}{9}}\right) - \ldots + (-1)^n \left(\,\cancel{\frac{1}{2n-1}}+\frac{1}{2n+1}\right)\right] \\
+      & =\frac{1}{4}\left[-1 + \frac{(-1)^n}{2n+1}\right]
+\end{align*}

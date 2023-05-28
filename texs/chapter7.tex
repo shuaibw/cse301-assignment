@@ -1,0 +1,108 @@
+\begin{center}
+    {\huge Chapter 7}
+\end{center}
+\section*{Problem 1}
+The original problem had the following generating function:
+\[
+    T=\frac{1}{1-\vrbar-\hrbar^2}
+\]
+Since the collector pays $4\$$ for each $\vrbar$ and $1\$$ for each $\hrbar$, we can substitute $z^4$ for $\vrbar$ and $z$ for $\hrbar$.
+\[
+    T=\frac{1}{1-z^4-z^2}
+\]
+This is like the original generating function, with $z$ being replaced by $z^2$. The original generating function had a solution: $\left[z^n\right]T = F_{n+1}$ , where $\left[z^n\right]T$ means coefficient of $z^n$ from the expansion of $T$. Since the exponent of $z$ in each terms of the new generating function is even, there are no terms with odd powers of $z$. Therefore the answer is $0$ if $m$ is odd, else $F_{m/2 + 1}$
+\section*{Problem 7}
+Given,
+\begin{align*}
+    g_0 & = 1                                                        \\
+    g_n & = g_{n-1} + 2g_{n-2} + \ldots + ng_0 \quad \text{for } n>0
+\end{align*}
+Here, we will follow the four steps mentioned in page \textit{337} of the book:
+\begin{enumerate}[label=(\arabic*)]
+    \item Expressing $g_n$ in a single equation: The recurrence equation is defined only for $n>0$ . In order to handle the base case $g_0=0$, we express $g_n$ as following:
+          \begin{align*}
+              g_n = g_{n-1} + 2g_{n-2} + \ldots + ng_0 + \left[n=0\right] \stampeq \label{ch7:7_1}
+          \end{align*}
+    \item Express in terms of $G(z)$: For this part, we multiple both sides of equation \eqref{ch7:7_1} with $z^n$ and sum over all possible values of $n$:
+          \begin{align*}
+              \sum_{n}z^ng_n          & = \sum_{n}z^ng_{n-1} + \sum_{n}2z^ng_{n-2} + \ldots + \sum_{n}nz^ng_0 + \sum_{n}z^n\left[n=0\right]                                       \\
+              \implies \sum_{n}z^ng_n & = \sum_{n}z^{n+1}g_{n} + \sum_{n}2z^{n+2}g_{n} + \ldots + \sum_{n}nz^{n+n}g_{n} + \sum_{n}z^n\left[n=0\right] \quad \text{(shifting $n$)} \\
+              \implies \sum_{n}z^ng_n & = z\sum_{n}z^{n}g_{n} + 2z^2\sum_{n}z^{n}g_{n} + \ldots + nz^n\sum_{n}z^{n}g_{n} + \sum_{n=0}z^0                                          \\
+              \implies G(z)           & = zG(z) + 2z^2 G(z) + \ldots + nz^nG(z) + 1
+          \end{align*}
+    \item Solve for $G(Z)$ and express it as a ratio of two polynomials, $\frac{P(z)}{Q(z)}$. Here, the degree of $P(z)$ needs to be smaller than that of $Q(z)$:
+          \begingroup
+          \allowdisplaybreaks
+          \begin{align*}
+              G(z)          & = zG(z) + 2z^2 G(z) + \ldots + nz^nG(z) + 1 \\
+              \implies G(z) & = \frac{1}{1-z-2z^2-\ldots-nz^n}            \\
+              \implies G(z) & = \frac{1}{1-z(1+2z+3z^2-\ldots-nz^{n-1})}  \\
+              \implies G(z) & = \frac{1}{1-z(1-z)^{-2}}                   \\
+              \implies G(z) & = \frac{(1-z)^2}{(1-z)^2-z}                 \\
+              \implies G(z) & = \frac{1-2z-z^2}{1-3z-z^2}                 \\
+              \implies G(z) & = 1 + \frac{z}{1-3z-z^2}                    \\
+          \end{align*}
+          \endgroup
+    \item Find the coefficient of $z^n$: This coefficient is the closed form of $g_n$. Here, the extra $1$ added with $G(z)$ does not have any contribution to the coefficient of $z^n$, so it is best left to be ignored. Express the rest as partial fraction and find the coefficient of $z^n$:
+          \begin{align*}
+              \frac{z}{1-3z-z^2} & =\frac{z}{(1-\phi_1z)(1-\phi_2z)} \quad \text{Where, } \phi_1=\frac{3+\sqrt{13}}{2},\;\phi_2=\frac{3-\sqrt{13}}{2}               \\
+                                 & =\frac{1}{\phi_1-\phi_2}\left(\frac{1}{1-\phi_1z}-\frac{1}{1-\phi_2z}\right) \quad \text{[ Decomposing into partial fractions ]} \\
+                                 & =\frac{1}{\phi_1-\phi_2}\left(\left(1-\phi_1z\right)^{-1} - \left(1-\phi_2z\right)^{-1} \right)
+          \end{align*}
+          Since $[x^n](1-px)^{-1} = p^n$ (read as coefficient of $x^n$ from $(1-px)^{-1}$),
+          \begin{align*}
+              [z^n]G(z) & = \frac{1}{\phi_1-\phi_2}\left({\phi_1}^n - {\phi_2}^n\right) \\
+                        & =\frac{1}{\sqrt{13}}\left({\phi_1}^n - {\phi_2}^n\right)
+          \end{align*}
+\end{enumerate}
+The roots $\phi_1, \phi_2$ were found using the following rule: Suppose $Q(z)$ has the form:
+\[
+    Q(z) = q_0 + q_1z + \ldots + q_nz^n
+\]
+Then the reflected polynomial of $Q(z)$ is denoted as:
+\[
+    Q^R(z) = q_0z^n + q_1z^{n-1} + \ldots + q_n
+\]
+If $Q^R(z)$ has the roots $p_1, p_2, \ldots, p_n$, then the roots of $Q(z)$ are $\frac{1}{p_1}, \frac{1}{p_2}, \ldots, \frac{1}{p_n}$. So if we can express $Q^R(z)=q_0(p_1-z)(p_2-z)\ldots(p_n-z)$, then $Q(z)=q_0(1-p_1z)(1-p_2z)\ldots(1-p_nz)$
+\section*{Problem 21}
+We can express the generating function as:
+\begin{align*}
+    G(z) & = (1 + z^{10} + z^{20} + \ldots )(1 + z^{20} + z^{40} + \ldots ) \\
+         & =\left(1-z^{10}\right)^{-1}\left(1-z^{20}\right)^{-1}            \\
+         & =\frac{1}{\brf*{1-z^{10}}\brf*{1-z^{20}}}
+\end{align*}
+A more compact generating function can be found with the substitution $z^{10} \rightarrow z$
+\begin{align}
+    G(z) = \frac{1}{\brf*{1-z}\brf*{1-z^2}} \label{ch7:21_1}
+\end{align}
+Determining $[z^n]G(z)$:
+\begin{align*}
+    \hat{G}(z)               & = \frac{1}{\brf*{1-z}\brf*{1-z^2}}                                           \\
+                             & =\frac{1}{4(1-z)} + \frac{1}{2(1-z)^2} + \frac{1}{4(1+z)}                    \\
+                             & =\frac{1}{2}(1-z)^{-2} + \frac{1}{4}\brf*{\brf*{1-z}^{-1} + \brf*{1+z}^{-1}} \\
+    \implies [z^n]\hat{G}(z) & = \frac{1}{2}\brf*{1+n} + \frac{1}{4}\brf*{1+(-1)^n}
+\end{align*}
+Since $\hat{G}(z)$ is the compact representation of $G(z)$ by a power of $10$, finding $[z^{500}]$ from $G(z)$ is equivalent to finding $[z^{50}]$ from $\hat{G}(z)$.
+\[
+    \therefore [z^{50}]\hat{G}(z) = 26
+\]
+This can also be found by simple counting technique. Since,
+\begin{align*}
+    \hat{G}(z) & = \frac{1}{\brf*{1-z}\brf*{1-z^2}}  \\
+               & =(1+z+z^2+\ldots)(1+z^2+z^4+\ldots)
+\end{align*}
+Here, $[z^{50}] =[z^0][z^{50}] + [z^2][z^{48}] + [z^4][z^{46}] + \ldots + [z^{50}][z^{0}]$. Since each of the coefficients in the expanded series is $1$, the number of possible ways to get $z^{50}$ is $\frac{50-0}{2} + 1 = 26$
+\clearpage
+\section*{Problem 35}
+\begingroup
+\allowdisplaybreaks
+\begin{align*}
+    S_n & = \sum_{0<k<n} \frac{1}{k(n-k)}                                               \\
+        & = \sum_{0<k<n} \brf*{\frac{1}{nk} + \frac{1}{n(n-k)}}                         \\
+        & = \sum_{0<k<n} \brf*{\frac{1}{nk} + \frac{1}{n(n-k)}}                         \\
+        & = \frac{1}{n}\sum_{0<k<n} \frac{1}{k} + \frac{1}{n}\sum_{0<k<n} \frac{1}{n-k} \\
+        & = \frac{1}{n}H_{n-1} + \frac{1}{n} \sum_{0<n-k<n} \frac{1}{k}                 \\
+        & = \frac{1}{n}H_{n-1} + \frac{1}{n} \sum_{0<k<n} \frac{1}{k}                   \\
+        & = \frac{2}{n}H_{n-1}
+\end{align*}
+\endgroup

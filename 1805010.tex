@@ -1,0 +1,72 @@
+\documentclass{article}
+\usepackage{graphicx,fancyhdr,amsmath,amssymb,amsthm,subfig,url}
+\usepackage[margin=1in]{geometry}
+\usepackage{setspace}
+\usepackage{texs/tikzit}
+\usepackage{pgfplots}
+\input{texs/sample.tikzstyles}
+\usepackage{enumitem}
+\usepackage{array}   % for \newcolumntype macro
+\usepackage{textcomp, gensymb}
+\usepackage{cancel}
+\usepackage{mathtools}
+
+%----------------------- Macros and Definitions --------------------------
+\renewcommand{\gcd}[1]{\text{gcd}\left(#1\right)}
+\newcommand{\lcm}[1]{\text{lcm}\left(#1\right)}
+\renewcommand{\min}[1]{\text{min}\left(#1\right)}
+\renewcommand{\max}[1]{\text{max}\left(#1\right)}
+\DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
+\renewcommand{\mod}[1]{\quad \left(\text{mod } #1\right)}
+\newcommand{\vphi}[1]{\varphi(#1)}
+\newcommand{\hrbar}{\scalebox{0.35}{\tikzfig{fig7_2}}}
+\newcommand{\vrbar}{\scalebox{0.35}{\tikzfig{fig7_1}}}
+\DeclarePairedDelimiter{\brf}{(}{)}
+\newcolumntype{L}{>{$}l<{$}} % math-mode version of "l" column type
+
+%%% FILL THIS OUT
+\newcommand{\studentname}{Anwarul Bashir Shuaib}
+\newcommand{\suid}{1805010}
+\newcommand{\stampeq}{\stepcounter{equation} \tag{\theequation}}
+%%% END
+
+
+
+\renewcommand{\theenumi}{\bf \Alph{enumi}}
+
+%\theoremstyle{plain}
+%\newtheorem{theorem}{Theorem}
+%\newtheorem{lemma}[theorem]{Lemma}
+
+\fancypagestyle{plain}{}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[RO,LE]{\sffamily\bfseries\large Mathematical Analysis for Computer Science}
+\fancyhead[LO,RE]{\sffamily\bfseries\large CSE 301}
+\fancyfoot[LO,RE]{\sffamily\bfseries\large \studentname: \suid @cse.buet.ac.bd}
+\fancyfoot[RO,LE]{\sffamily\bfseries\thepage}
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{1pt}
+
+\graphicspath{{figures/}}
+
+%-------------------------------- Title ----------------------------------
+
+\title{CSE 301}
+\author{\studentname \qquad Student ID: \suid}
+
+%--------------------------------- Text ----------------------------------
+\onehalfspacing
+\setlength{\parindent}{0pt}
+\begin{document}
+\input{texs/titlepage}
+\input{texs/chapter1}
+\pagebreak
+\input{texs/chapter2}
+\pagebreak
+\input{texs/chapter4}
+\pagebreak
+\input{texs/chapter7}
+\pagebreak
+\input{texs/practice}
+\end{document}

@@ -1,0 +1,262 @@
+\begin{center}
+    {\huge Practice Problems}
+\end{center}
+\section*{Problem 1}
+\textbf{Q:} Find the largest positive integer $n$ such that $(n+10) \mid (n^3+100)$.
+\begin{align*}
+    n+10               & \equiv 0 \mod{\brf*{n+10}}     \\
+    \implies n         & \equiv -10 \mod{\brf*{n+10}}   \\
+    \implies n^3       & \equiv -1000 \mod{\brf*{n+10}} \\
+    \implies n^3 + 100 & \equiv -900 \mod{\brf*{n+10}}
+\end{align*}
+
+Here, largest value of $n$ such that $(n+10) \mid -900$ is 890.
+
+\section*{Problem 2}
+\textbf{Q:} Show that the fraction $\frac{12n+1}{30n+2}$ is irreducible for all positive integers $n$.\\
+
+Suppose the fraction is reducible, that is, there is a factor $p>1$ such that $\gcd{12n+1, 30n+2} = p$. So, $p \mid 12n+1$ and $p \mid 30n+2$. Therefore,
+\begin{align*}
+    12n+1          & \equiv 0 \mod{p}                                                     \\
+    \implies 60n+5 & \equiv 0 \mod{p} \stampeq \label{pp:2_1} \quad \text{Multiply by } 5 \\
+    30n+2          & \equiv 0 \mod{p}                                                     \\
+    \implies 60n+4 & \equiv 0 \mod{p} \stampeq \label{pp:2_2} \quad \text{Multiply by } 2
+\end{align*}
+Subtracting \eqref{pp:2_1} and \eqref{pp:2_2},
+\[
+    1 \equiv 0 \mod{p} \implies p \mid 1 \quad \text{[ Contradiction ]}
+\]
+\section*{Problem 3}
+\textbf{Q:} Call a number \textit{prime looking} if it is composite but not divisible by 2, 3, or 5. The three smallest prime-looking numbers are 49, 77, and 91. There are 168 prime numbers less than 1000. How many prime-looking numbers are there less than 1000?\\
+
+Let, $|S_n|$ denote the number of integers that are less than $1000$ and divisible by $n$.\\
+\begin{minipage}{.33\textwidth}
+    \begin{align*}
+        \mid S_2\mid & = \floor*{\frac{1000}{2}} = 500 \\
+        \mid S_3\mid & = \floor*{\frac{1000}{3}} = 333 \\
+        \mid S_5\mid & = \floor*{\frac{1000}{5}} = 200
+    \end{align*}
+\end{minipage}%
+\begin{minipage}{0.33\textwidth}
+    \begin{align*}
+        \mid S_{2,3}\mid & = \floor*{\frac{1000}{2\times3}} = 166 \\
+        \mid S_{2,5}\mid & = \floor*{\frac{1000}{2\times5}} = 100 \\
+        \mid S_{3,5}\mid & = \floor*{\frac{1000}{5\times3}} = 66
+    \end{align*}
+\end{minipage}%
+\begin{minipage}{0.33\textwidth}
+    \[
+        \mid S_{2,3,5}\mid  = \floor*{\frac{1000}{2\times3\times5}}= 33
+    \]
+\end{minipage}
+
+According to principle of inclusion-exclusion, number of integers that are either divisible by 2,3 or 5 are given by:
+\begin{align*}
+    N & = \mid S_2\mid  + \mid S_3\mid  + \mid S_5\mid  - \left(\mid S_{2,3}\mid  + \mid S_{2,5}\mid  + \mid S_{3,5}\mid \right) + \mid S_{2,3,5}\mid \\
+      & =734
+\end{align*}
+Therefore, number of integers that are neither divisible by 2,3 and 5 is: $1000-734=266$. Note that, among the 734 integers we found earlier, 2,3 and 5 were already included in those 734 integers. From the rest 266 integers, there are $168-|2,3,5| = 165$ prime numbers. We also need to subtract $1$ since the number $1$ itself is neither a prime nor a prime-looking number. So the number of prime-looking integers less than 1000 is: $266-165-1 = 100$.
+\section*{Problem 4}
+\textbf{Q:} Let m and n be positive integers such that $\lcm{m, n} + \gcd{m, n} = m + n$. Prove that one of the two numbers is divisible by the other.\\
+
+Let $\gcd{m,n}=d$. Since $\gcd{m,n}\times \lcm{m,n}=mn$,
+\begin{align*}
+    \frac{mn}{d} + d    & = m + n \\
+    \implies (m-d)(n-d) & =0
+\end{align*}
+Therefore, $m=d$ or $n=d$. Since $\gcd{m,n}=d \implies d\mid m$ and $d \mid n$, we can conclude one of the two numbers is divisible by the other.
+
+\section*{Problem 5}
+\textbf{Q:} Show that for any positive integers $a$ and $b$, the number $(36a + b)(a + 36b)$ cannot be a power of 2.\\
+
+Suppose for contradiction that there exists a minimum integer $k$ such that $(36a+b)(a+36b)=2^k$. This means each of the factors must be a power of $2$, this is only possible when both $a$ and $b$ are even. This is because if either of $a$ or $b$ were to be odd, then at least one of the factors would be odd. Let,
+\begin{align*}
+    a = 2a'
+    b = 2b'
+\end{align*}
+Therefore,
+\begin{align*}
+    (36a+b)(a+36b)                 & =2^k     \\
+    \implies 2^2(36a'+b')(a'+36b') & =2^k     \\
+    \implies (36a'+b')(a'+36b')    & =2^{k-2}
+\end{align*}
+But this contradicts the minimality of $k$. We assumed $k$ was the minimum possible integer that satisfies $(36a+b)(a+36b)=2^k$, but now we are getting a smaller integer $k-2$ that satisfies our hypothesis. Thus we arrive at a contradiction.
+\section*{Problem 6}
+\textbf{Q:} Find all positive integers $n$ such that $n!+5$ is a perfect cube.\\
+
+Check by brute-force $\forall n \leq 9$, we find that only such integer is $n=5$. Now $\forall n \geq 10$, $100 \mid n!$ since $n!$ contains $2\times5\times10=100$. Now,
+\begin{align*}
+    n!            & \equiv 0 \mod{100}   \\
+    \implies n!+5 & \equiv5\mod{100}     \\
+    \implies k^3  & \equiv 5\mod{100}    \\
+    \implies k^3  & = 100c + 5 \quad c>0 \\
+    \implies k^3  & = 5(20c+1)
+\end{align*}
+In order for $k^3$ to be a perfect cube, there must be at least a factor of $5^3$ in it. However, we can factor out only one $5$, since for any value of $c>0$, we cannot factor out any more $5\,$s from $(20c+1)$. This means $k^3$ cannot be a perfect cube, which leads to a contradiction.
+
+\section*{Problem 7}
+\textbf{Q:} Let $n$ be an integer greater than three. Prove that $1! + 2! + \ldots + n!$ cannot be a perfect power.\\
+
+First assume $1! + 2! + \ldots + n!$ can be expressed in a perfect square. Here,
+\begin{align*}
+    1!+2!+3!+4!                & \equiv 3 \mod{10}                                                 \\
+    5!+6!+\ldots+n!            & \equiv 0 \mod{10}                                                 \\
+    \implies 1!+2!+3!\ldots+n! & \equiv 3 \mod{10} \quad \text{(Adding the upper two expressions)}
+\end{align*}
+This indicates that the last digit of $1!+2!+3!\ldots+n!$ is 3. But there are no integers whose even power ends with $3$ (one may manually check $1^2 = 1, 2^2=4, \ldots, 9^2 = 81$, none of those squares end with $3$). So the given expression cannot be expressed in a perfect square (A stronger conclusion can be derived: The given expression cannot be expressed in any perfect even powers).\\
+
+Now assume that $1! + 2! + \ldots + n!$ can be expressed in perfect powers greater than 2. Now,
+\begin{align*}
+     & 1!+2!+3!+\ldots+8!                                               \\
+     & =46233                                                           \\
+     & =3^2\times11\times467                                            \\
+     & =9k_1 \quad \text{Where }k_1=11\times467 \stampeq \label{pp:7_1}
+\end{align*}
+Similarly, we can factor out $27$ from $n!$ when $n\geq9$. So,
+\begin{align*}
+     & 9!+10!+\ldots+n!                                                                       \\
+     & =27k_2 \quad \text{Where }k_2 \text{ is some positive integer} \stampeq \label{pp:7_2}
+\end{align*}
+Adding \eqref{pp:7_1} and \eqref{pp:7_2},
+\begin{align*}
+    1!+2!+\ldots+n! & = 9k_1+27k_2            \\
+                    & =9(k_1+3k_2)            \\
+                    & =3^2(11\times467 + k_2)
+\end{align*}
+Here, we can see that the expression $ 1!+2!+\ldots+n! $ can have $3\,$s at most twice, but in order to be a perfect power greater than 2, it needs to have at least that many $3\,$s. This is a contradiction to our assumption, so the expression $ 1!+2!+\ldots+n! $ cannot be a perfect power.
+\section*{Problem 8}
+\textbf{Q: }Let $p$ be a prime. Show that there are infinitely many positive integers $n$ such that $p \mid 2^n-n$\\
+
+Since $p$ is a prime, applying Fermat's little theorem, we get:
+\begin{align*}
+    2^{p-1}                  & \equiv 1 \mod{p}   \\
+    \implies 2^{m\brf*{p-1}} & \equiv 1^m \mod{p}
+\end{align*}
+If we let $m=(p-1)^{2k-1}$, we get:
+\begin{align*}
+    2^{{\brf*{p-1}}^{2k}} & \equiv 1 \mod{p} \stampeq \label{pp:8_1}
+\end{align*}
+Now,
+\begin{align*}
+    p                   & \equiv 0 \mod{p}                         \\
+    \implies p-1        & \equiv -1 \mod{p}                        \\
+    \implies (p-1)^{2k} & \equiv (-1)^{2k} \mod{p}                 \\
+    \implies (p-1)^{2k} & \equiv 1 \mod{p} \stampeq \label{pp:8_2}
+\end{align*}
+From \eqref{pp:8_1} and \eqref{pp:8_2},
+\begin{align*}
+    2^{{\brf*{p-1}}^{2k}} & \equiv (p-1)^{2k} \mod{p}                         \\
+    \implies 2^n          & \equiv n \mod{p} \quad \text{Where } n=(p-1)^{2k} \\
+    \implies 2^n - n      & \equiv 0 \mod{p}
+\end{align*}
+Thus for different values of $k$ in the equation $n=(p-1)^{2k}$, we would get different values of $n$. Thus our proof is complete.\\
+
+JK, not yet. For $p=2$, the value of $n$ will always be $1$ regardless of any positive integer value of $k$. We need to handle this case separately. Fortunately, this case is easy. When $p=2$, $p\mid\left(2^n-n\right)$ for every even positive integer $n$. This completes the proof.
+\section*{Problem 9}
+\textbf{Q: }Prove that $a^p\equiv a$ mod$\,(p)$, where $p$ is any prime.\\
+
+Let $S = \{a, 2a, 3a, \ldots, (p-1)\cdot a\}$. For each element from $S$, if we divide it by $p$ and put the remainders in a set $R$, we would get $R = \{1,2,3,\ldots,(p-1)\}$. The set $S$ is thus sometimes called complete residue class modulo $p$, since it generates all possible reminders from $1,2,\ldots,(p-1)$ when divided by $p$. Now multiplying each element from $S$ and $R$ and taking their modulo, we get:
+\begin{align*}
+    (a)\cdot(2a)\cdot(3a)\ldots\left((p-1)\times a\right) & \equiv 1\cdot2\cdot3\ldots(p-1) \mod{p}              \\
+    \implies a^{p-1} \cdot (p-1)!                         & \equiv (p-1)! \mod{p}                                \\
+    \implies a^{p-1}                                      & \equiv 1 \mod{p} \quad [\text{Since } (p-1)!\perp p] \\
+    \implies a^p                                          & \equiv a \mod{p}
+\end{align*}
+\section*{Problem 10}
+\textbf{Q: }Find all prime numbers $p$ and $q$ for which $pq\mid(5^p-2^p)(5^q-2^q)$\\
+
+Here,
+\begin{align*}
+    5^p-2^p & = (5-2)\brf*{5^{p-1}+5^{p-2}\cdot 2 + 5^{p-3}\cdot 2^2 + \ldots + 5\cdot2^{p-2} + 2^{p-1}} \\
+            & =3\brf*{5^{p-1}+5^{p-2}\cdot 2 + 5^{p-3}\cdot 2^2 + \ldots + 5\cdot2^{p-2} + 2^{p-1}}
+\end{align*}
+Similarly,
+\begin{align*}
+    5^q-2^q                       & = 3\brf*{5^{q-1}+5^{q-2}\cdot 2 + 5^{q-3}\cdot 2^2 + \ldots + 5\cdot2^{q-2} + 2^{q-1}}        \\
+    \therefore (5^p-2^p)(5^q-2^q) & = 3^2\brf*{5^{p-1}+5^{p-2}\cdot 2+\ldots+2^{p-1}}\brf*{5^{q-1}+5^{q-2}\cdot 2+\ldots+2^{q-1}}
+\end{align*}
+Here, $pq \mid (5^p-2^p)(5^q-2^q)$ if we let $p=3, q=3$. Now, consider the case when only $p=3$.
+\begin{align*}
+    (5^p-2^p)(5^q-2^q) & = (5^3-2^3)(5^q-2^q)  \\
+                       & =3^2\times13(5^q-2^q)
+\end{align*}
+Here, $pq \mid (5^p-2^p)(5^q-2^q)$ if we let $p=3, q=13$. Since the cases are symmetric for, we can also conclude that the division is possible when $p=13, q=3$. Therefore, the possible values are: $(p,q) = (3,3), (3,13), (13,3)$
+\clearpage
+\section*{Problem 11}
+Since $\gcd{a,b} = \gcd{a-kb,b}$ for any integer $k$, we can write:
+\begin{align*}
+     & \gcd{(n+1)!+1, n!+1}                \\
+     & =\gcd{(n+1)!+1 - (n+1)(n!+1), n!+1} \\
+     & =\gcd{(n+1)!+1-(n+1)!-(n+1), n!+1}  \\
+     & =\gcd{-n, n!+1}                     \\
+     & =\gcd{n, n!+1}
+\end{align*}
+Here, $n!+1 \perp n$, therefore $\gcd{n, n!+1} = 1$.
+
+\section*{Problem 12}
+\textbf{Q: }Find the smallest positive integer whose cube ends in 888.\\
+
+Let the number be $x$. By trial and error for the ones digit: $1^3=1, 2^3=8, 3^3=27, \ldots, 9^3=729$, we see that only possible choice for the ones digit is $2$ if $x^3$ is to end in $8$. Since the ones digit of $x$ is $2$, we can write $x=10k+2$. Now,
+\begin{align*}
+    x            & =10k+2                       \\
+    \implies x^3 & =1000k^3 + 600k^2 + 120k + 8
+\end{align*}
+Since the ones digit of $x^3$ is $8$, the leftover part $1000k^3 + 600k^2+120k$ needs to end with $880$. In other words, $\frac{1000k^3 + 600k^2+120k}{10}=100k^3 + 60k^2+12k$ needs to end with $88$. Now,
+\begin{align*}
+    100k^3 + 60k^2 + 12k \equiv 12k \equiv 8 \mod{10}
+\end{align*}
+We can write this because $100k^3$ and $60k^2$ are both divisible by $10$, so the remainder part must come from $12k$, and this remainder part has to end with an $8$. So $k$ must end with either $4$ or $9$. Manually checking some values,
+\begin{align*}
+    12\times 4 = 48   & \implies x^3 = (42)^3 = 74088    \\
+    12\times 9 = 108  & \implies x^3 = (92)^3 = 778688   \\
+    12\times 14 = 168 & \implies x^3 = (142)^3 = 2863288 \\
+    12\times 19 = 228 & \implies x^3 = (192)^3 = 7077888
+\end{align*}
+Therefore $x=192$.
+\clearpage
+\section*{Problem 13}
+\textbf{Q: }Let $p\geq3$ be a prime, and let $\{a_1, a_2, \ldots, a_{p-1}\}$ and $\{b_1, b_2, \ldots, b_{p-1}\}$ be two sets of complete residue classes modulo $p$. Prove that $a_1b_1, a_2b_2,\ldots,a_{p-1}b_{p-1}$ is not a complete set of residue classes modulo $p$.\\
+
+Since the sets are complete residue classes modulo $p$ (which means the elements of the set produce all possible remainders $1,2,\ldots,(p-1)$ when divided by $p$), according to Wilson's theorem, we get:
+\begin{align*}
+    a_1\cdot a_2\ldots a_{p-1} & \equiv 1\cdot2\ldots (p-1) \mod{p}         \\
+                               & \equiv (p-1)! \mod{p}                      \\
+                               & \equiv -1 \mod{p} \stampeq \label{pp:13_1}
+\end{align*}
+Similarly,
+\begin{align}
+    b_1\cdot b_2\ldots b_{p-1} & \equiv -1 \mod{p} \stampeq \label{pp:13_2}
+\end{align}
+Multiplying \eqref{pp:13_1} and \eqref{pp:13_2},
+\begin{align*}
+    a_1b_1 \cdot a_2b_2 \ldots a_{p-1}b_{p-1} \equiv 1 \mod{p}
+\end{align*}
+However, it is important to note that only the product of integers that generate all possible remainders $1, 2, \ldots, (p-1)$ is congruent to $-1$ modulo $p$. In this case, the product $a_1b_1 \cdot a_2b_2 \ldots a_{p-1}b_{p-1}$ does not satisfy this congruence, indicating that the set $\{a_1b_1, a_2b_2, \ldots ,a_{p-1}b_{p-1}\}$ does not encompass all the possible remainders modulo $p$. Therefore, this set cannot be considered a complete set of residue classes modulo $p$.
+\clearpage
+\section*{Problem 14}
+\textbf{Q: }Let $n>1$ be an odd integer. Prove that $n \nmid 3^n + 1$.\\
+
+Here, the integer $3^n$ is always odd for any value of $n>1$. Therefore, $3^n+1$ is always even, hence $n \nmid 3^n + 1$. This proof can also be visualized in a different way: let us write the first few values of the integers in base 3 notation:
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{L|L|L}
+        \text{Base 10} & \text{Base 3} & \sum \text{Digits of base 3} \\ \hline
+        1              & 1             & 1                            \\
+        2              & 2             & 2                            \\
+        3              & 10            & 1                            \\
+        4              & 11            & 2                            \\
+        5              & 12            & 3                            \\
+        6              & 20            & 2                            \\
+        7              & 21            & 3                            \\
+        8              & 22            & 4                            \\
+        9              & 100           & 1                            \\
+        10             & 101           & 2                            \\
+        11             & 102           & 3                            \\
+        12             & 110           & 2                            \\
+        13             & 111           & 3                            \\
+        14             & 112           & 4                            \\
+        15             & 120           & 3
+    \end{tabular}
+\end{table}
+
+Here, we see that for odd integers, the sum of digits of the base 3 notation is always odd, and for even integers, the sum of digits of the base 3 notation is always even. Now the integer $3^n + 1$ can be written as $1000\ldots0001$ in base 3 notation, where the most significant bit $1$ is followed by $n-1$ zeroes, then followed by a single $1$ at the rightmost side. In base 3 notation, the only non-zero digits in $3^n+1$ are $1$ and $1$, and their sum is $2$, indicating that $3^n+1$ is always an even integer. However, $n$ is always an odd integer, and an odd integer can never divide an even integer. Thus $n \nmid 3^n + 1$.\\

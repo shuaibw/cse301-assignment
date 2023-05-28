@@ -1,0 +1,218 @@
+\begin{center}
+    {\huge Chapter 4}
+\end{center}
+\section*{Problem 2}
+We can represent a number in its prime-exponent representation. A prime-exponent representation is a set of the exponents of the consecutive primes that build up a number. For example, $60 = 2^3 \times 3 \times 5$, the prime-exponent representation would be $\left[3,1,1,0,0,0,\ldots\right]$
+
+\begin{align*}
+    \gcd{m,n}                             & \Longleftrightarrow \min{m_p, n_p} \forall p                \\
+    \lcm{m,n}                             & \Longleftrightarrow \max{m_p, n_p} \forall p                \\
+    \therefore \gcd{m,n} \times \lcm{m,n} & \Longleftrightarrow \min{m_p,n_p} + \max{m_p,n_p} \forall p
+\end{align*}
+But, $ \min{m_p,n_p} + \max{m_p,n_p} = m_p + n_p $
+\begin{align*}
+    \therefore \gcd{m,n} \times \lcm{m,n} & \Longleftrightarrow  m_p + n_p \quad \forall p \stampeq \label{ch4:2_1} \\
+    m\times n                             & \Longleftrightarrow m_p + n_p \quad \forall p \stampeq \label{ch4:2_2}
+\end{align*}
+From equation \eqref{ch4:2_1} and \eqref{ch4:2_2},
+\[
+    \gcd{m,n} \times \lcm{m,n} =  m\times n
+\]
+Since $\gcd{m,n} = \gcd{n\text{ mod } m, m}$,
+\begin{align*}
+             & \gcd{n\text{ mod } m, m}\cdot \lcm{n\text{ mod } m, m} = m\times n\text{ mod } m \\
+    \implies & \frac{mn}{\lcm{m,n}} \cdot \lcm{n\text{ mod } m, m} = m\times n\text{ mod } m    \\
+    \implies & \lcm{m,n} = \frac{n}{n \text{ mod } m} \lcm{n \text{ mod } m, m}
+\end{align*}
+
+\section*{Problem 14}
+Let the prime-exponent representations of $k$, $m$, and $n$ be the following:
+\begin{align*}
+    k  & \Longleftrightarrow [k_1, k_2, k_3, \ldots]             \\
+    m  & \Longleftrightarrow [m_1, m_2, m_3, \ldots]             \\
+    n  & \Longleftrightarrow [n_1, n_2, n_3, \ldots]             \\
+    km & \Longleftrightarrow [k_1+m_1, k_2+m_2, k_3+m_3, \ldots] \\
+    kn & \Longleftrightarrow [k_1+n_1, k_2+n_2, k_3+n_3, \ldots]
+\end{align*}
+Now,
+\begin{align*}
+    \gcd{km,kn} & \Longleftrightarrow \min{k_p+m_p, k_p+n_p} \forall p                         \\
+                & \Longleftrightarrow k_p + \min{m_p, n_p} \forall p \stampeq \label{ch4:14_1}
+\end{align*}
+Again,
+\begin{align*}
+    k\;\gcd{m,n} & \Longleftrightarrow k_p + \min{m_p, n_p} \forall p \stampeq \label{ch4:14_2}
+\end{align*}
+From equation \eqref{ch4:14_1} and \eqref{ch4:14_2},
+\[
+    \gcd{km,kn} = k\;\gcd{m,n}
+\]
+Similarly,
+\begin{align*}
+    \lcm{km,kn} & \Longleftrightarrow \max{k_p+m_p, k_p+n_p} \forall p                         \\
+                & \Longleftrightarrow k_p + \max{m_p, n_p} \forall p \stampeq \label{ch4:14_3}
+\end{align*}
+Again,
+\begin{align*}
+    k\;\lcm{m,n} & \Longleftrightarrow k_p + \max{m_p, n_p} \forall p \stampeq \label{ch4:14_4}
+\end{align*}
+From equation \eqref{ch4:14_3} and \eqref{ch4:14_4},
+\[
+    \lcm{km,kn} = k\;\lcm{m,n}
+\]
+
+\section*{Problem 18}
+For this problem, we would use the following formula: there is a factorization for $x^n+1$ when $n$ is odd.
+\[
+    x^n + 1 = (x+1)(x^{n-1}-x^{n-2}+x^{n-3}-\ldots+1)
+\]
+Suppose $n$ is not a power of $2$. Let $n = ab$, where $a$ is an odd integer greater than 1. Then,
+\[
+    2^n + 1 = ({2^b})^a + 1 = (2^b+1)(2^{b(a-1)} - 2^{b(a-2)} + 2^{b(a-3)} + \ldots + 1)
+\]
+$2^n + 1$ is product of $2$ numbers, which leads to a contradiction. Therefore, if $2^n+1$ is prime then $n$ is a power of $2$.
+
+\section*{Problem 24}
+In radix $p$ representation,
+\begin{align*}
+    n                      & = n_lp^l + n_{l-1}p^{l-1} +  \ldots + n_1p + n_0 \\
+    \floor*{\frac{n}{p^r}} & = n_lp^{l-r} + n_{l-1}p^{l-1-r} +  \ldots + n_r  \\
+\end{align*}
+Now,
+\begin{align*}
+    \epsilon(n!) & = \floor*{\frac{n}{p}} + \floor*{\frac{n}{p^2}} + \ldots + \floor*{\frac{n}{p^{r-1}}} + \floor*{\frac{n}{p^{r}}} \\
+    \begin{split}
+        &=n_lp^{l-1} + n_{l-1}p^{l-2} + \ldots + n_2p + n_1 \\
+        &+n_lp^{l-2} + n_{l-2}p^{l-3} + \ldots + n_2\\
+        &\cdots\\
+        &+n_l
+    \end{split}                                                                             \\
+                 & =n_1 + n_2(p+1) + n_3(p^2+p+1) + \ldots + n_l(p^{l-1} + \ldots + 1)                                              \\
+                 & =\frac{n_1(p-1) + n_2(p^2-1) + n_3(p^3-1) + \ldots + n_l(p^l-1)}{p-1}                                            \\
+                 & =\frac{(n_0 + n_1p + n_2p^2 + n_3p^3 + \ldots + n_lp^l)-(n_0 + n_1 + \ldots + n_l)}{p-1}                         \\
+                 & =\frac{n-\upsilon_p(n)}{p-1}
+\end{align*}
+% \section*{Problem 30}
+% Given pairwise co-prime integers $m_1, m_2, \ldots, m_r$, we would like to prove there exists a unique integer $a$ such that,
+% \[
+% a\equiv a_k \mod{m_k} \text{ for } 1\leq k \leq r
+% \]
+\section*{Problem 31}
+Let,
+\begin{align*}
+    n          & = 10^k a_k  +  10^{k-1} a_{k-1} + \ldots + 10 a_1 + a_0                                                   \\
+    \implies n & \equiv 1^ka_k + 1^{k-1}a_{k-1} + \ldots + a_1 + a_0 \mod{3} \quad \text{[ Taking mod $3$ on both sides ]} \\
+    \implies n & \equiv a_k + a_{k-1} + \ldots + a_1 + a_0 \mod{3}
+\end{align*}
+Here, $3\mid n$ if and only if $a_k + a_{k-1} + \ldots + a_1 + a_0 = 0$.\\
+
+Similarly, in radix $b$ notation $n = b^ka_k + b^{k-1}a_{k-1} + \ldots + ba_1 + a_0$ is divisible by $d$ if and only if $b \equiv 1 \mod{d}$ and $d \mid \sum_{i=1}^{k}a_i$
+\section*{Problem 32}
+Euler's theorem:
+\[
+    n^{\vphi{m}} \equiv 1 \mod{m} \quad n\perp m
+\]
+Let $S$ be the set of co-primes of $m$ that are strictly below $m$.
+\[
+    S = \{a_1, a_2, \ldots, a_{\vphi{m}}\}
+\]
+Here, the number of elements in $S$ is $\vphi{m}$, since there are exactly $\vphi{m}$ co-primes of $m$ that are below $m$. Now, for any $a_i \in S$,
+\begin{align*}
+    a_i \perp m   & \text{ and } n \perp m \implies n a_i \perp m \\
+    \therefore \; & na_i \text{ mod } m \in S
+\end{align*}
+Now consider the set $nS=\{na_1, na_2, \ldots, na_{\vphi{m}}\}$. We would like to show that all distinct pairs of $na_i$ and $na_j$ from $nS$ are unique modulo $m$, that is each of $na_i$ and $na_j$ leave a distinct remainder when divided by $m$. Suppose for the sake of contradiction, they leave the same remainder:
+\[
+    na_i \equiv na_j \mod{m} \implies m \mid n(a_i-a_j)\\
+\]
+Since $n\perp m$,
+\[
+    m \mid (a_i-a_j)
+\]
+Here, both $a_i$ and $a_j$ are less than $m$. Then their difference $a_i-a_j$ is also less than $m$. This means $m$ divides something that is smaller than $m$, and this is only possible when $a_i = a_j$. This proves each distinct pair of elements from $nS$ would leave distinct remainders. Now,
+\begin{align*}
+    nS & \equiv \{na_1, na_2, \ldots, na_{\vphi{m}}\} \mod{m} \\
+    nS & \equiv S \mod{m} \stampeq \label{ch4:32_1}
+\end{align*}
+Where the last equation follows from the reasoning: since each pairs of $na_i$ and $na_j$ from $nS$ are distinct modulo $m$ (that is why we proved it earlier), then taking $\{na_1, na_2, \ldots, na_\vphi{m}\} \text{ mod } m$ will leave us with $\{a_1, a_2, \ldots, a_\vphi{m}\}$, although the elements maybe in different order than their original ordering. Multiplying all the elements of $S$ from \eqref{ch4:32_1},
+\begin{align*}
+    n^{\vphi{m}} \prod_{i=1}^{\vphi{m}} a_i & \equiv\prod_{i=1}^{\vphi{m}} a_i \mod{m}                                               \\
+    \implies n^{\vphi{m}}                   & \equiv 1 \mod{m} \quad \left[\text{ Since $\prod_{i=1}^{\vphi{m}} a_i \perp m$}\right]
+\end{align*}
+\section*{Problem 41}
+For this problem, it is implicitly assumed that $p$ is a prime number.
+\begin{enumerate}
+    \item Given $p \text{ mod } 4 = 3$, we can write $p = 4k + 3$. Suppose for the sake of contradiction, $p \mid n^2+1$. Then we can write:
+          \begin{align*}
+              n^2+1                        & \equiv 0 \quad \text{ mod } p                                                                    \\
+              \implies n^2                 & \equiv -1 \quad \text{ mod } p                                                                   \\
+              \implies (n^2)^\frac{p-1}{2} & \equiv (-1)^{\frac{p-1}{2}} \; \text{ mod } p                                                    \\
+              \implies n^{p-1}             & \equiv -1 \quad \text{ mod } p \quad \left(\text{since $p=4k+3$, $\frac{p-1}{2} $ is odd}\right)
+          \end{align*}
+          Which leads to a contradiction because $n^{p-1}\equiv -1 \text{ mod } p$ according to Fermat's little theorem. So, there is no such integer $n$ such that $p \nmid n^2+1$.
+    \item We can write $p = 4k + 1$. The proof is similar as before: we assume $p \mid n^2 + 1$.
+          \begin{align*}
+              n^2+1                                   & \equiv 0 \quad \text{ mod } p                                                                    \\
+              \Longleftrightarrow n^2                 & \equiv -1 \quad \text{ mod } p                                                                   \\
+              \Longleftrightarrow (n^2)^\frac{p-1}{2} & \equiv (-1)^{\frac{p-1}{2}} \; \text{ mod } p                                                    \\
+              \Longleftrightarrow n^{p-1}             & \equiv 1 \quad \text{ mod } p \quad \left(\text{since $p=4k+1$, $\frac{p-1}{2} $ is even}\right)
+          \end{align*}
+          Therefore, we can go backwards from here and this will lead to a modus ponens.
+\end{enumerate}
+
+\section*{Problem 42}
+Since $\gcd{a,b} = \gcd{a, b+na}\;\forall n$, we can conclude:
+\begin{align*}
+    m \perp n \; \text{ and } \; n' \perp n & \Longleftrightarrow mn' \perp n                                 \\
+                                            & \Longleftrightarrow mn' + m'n \perp n \stampeq \label{ch4:42_1}
+\end{align*}
+Similarly,
+\begin{align*}
+    m' \perp n' \; \text{ and } \; n \perp n' & \Longleftrightarrow m'n \perp n'                                  \\
+                                              & \Longleftrightarrow  m'n + mn' \perp n' \stampeq \label{ch4:42_2}
+\end{align*}
+
+From \eqref{ch4:42_1} and \eqref{ch4:42_2},
+\[
+    m' \perp n' \; \text{ and } \; n \perp n' \; \text{ and } \; m \perp n \Longleftrightarrow m'n + mn' \perp nn' \\
+\]
+Therefore, $\dfrac{m}{n} + \dfrac{m'}{n'} = \dfrac{m'n + mn'}{nn'}$ is reduced to lowest terms if and only if $n \perp n'$. By the phrase `\textit{reduced to lowest terms}', it means the denominator and numerator in the fraction $\dfrac{m'n + mn'}{nn'}$ are co-prime.
+\section*{Problem 46}
+\begin{enumerate}
+    \item According to diophantine equation, there exist integers $a$ and $b$ such that,
+          \[
+              aj + bk = {\gcd{j,k}}
+          \]
+          Now,
+          \begin{align*}
+              n^j             & \equiv 1 \mod{m}                             \\
+              \implies n^{aj} & \equiv 1^a \mod{m} \stampeq \label{ch4:46_1} \\
+              n^k             & \equiv 1 \mod{m}                             \\
+              \implies n^{bk} & \equiv 1^b \mod{m} \stampeq \label{ch4:46_2}
+          \end{align*}
+          From \eqref{ch4:46_1} and \eqref{ch4:46_2},
+          \begin{align*}
+              n^{aj}n^{bk}           & \equiv 1 \mod{m} \\
+              \implies n^ {aj + bk}  & \equiv 1\mod{m}  \\
+              \implies n^{\gcd{j,k}} & \equiv 1 \mod{m}
+          \end{align*}
+    \item Suppose for the sake of contradiction, $2^n \equiv 1 \mod{n}$. Since $n>1$, we can factor out the twos and represent it as $n=2^kc$, where $k>0$. We know,
+          \[
+              a\equiv b \;(\text{mod }mn) \Longleftrightarrow  a\equiv b \;(\text{mod }m) \; \text{ and } \;   a\equiv b \;(\text{mod }n) \quad \text{given } m \perp n
+          \]
+          We can thus write,
+          \[
+              2^n\equiv 1 \;(\text{mod }2^kc) \Longleftrightarrow  2^n\equiv 1 \;(\text{mod }2^k) \; \text{ and } \;   2^n\equiv 1 \;(\text{mod }c) \quad \text{since } 2^k \perp c
+          \]
+          But $2^n\equiv 1 \;(\text{mod }2^k)$ is impossible, since there is no way to have a remainder of $1$. If $n\geq k$, then $2^k \mid 2^n$ and the remainder would be $0$, else the remainder would be $2^n$, not $1$. This leads to a contradiction, so  $2^n \not \equiv 1\;(\text{mod }n)$
+
+\end{enumerate}
+
+\section*{Problem 47}
+Here,
+\begin{align*}
+    n^{m-1}                                           & \equiv 1 \mod{m}                  \\
+    \implies n^{m-1} (m-1)!                           & \equiv (m-1)! \mod{m}             \\
+    \implies (1\cdot n)(2\cdot n)\ldots((m-1)\cdot n) & \equiv 1\cdot2\ldots(m-1) \mod{m}
+\end{align*}
+Which indicates that the set $S=\{(1\cdot n), (2\cdot n), \ldots, ((m-1)\cdot n)\}$ is a complete residue class modulo $m$. This means if we take modulo $m$ for each element of $S$ and put them in a set, we would get $\{1,2,\ldots,m-1\}$. Hence, the numbers from the set $\{1,2,\ldots,m-1\}$ are co-prime to $m$, implying $m$ is a prime number.

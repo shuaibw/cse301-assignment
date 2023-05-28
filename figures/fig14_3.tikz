@@ -1,0 +1,10 @@
+\begin{tikzpicture}
+\pgfmathsetmacro{\cubex}{3}
+\pgfmathsetmacro{\cubey}{1.5}
+\pgfmathsetmacro{\cubez}{1.5}
+\draw[black] (0,0,0) -- ++(-\cubex,0,0) -- ++(0,-\cubey,0) -- ++(\cubex,0,0) -- cycle;
+\draw[black] (0,0,0) -- ++(0,0,-\cubez) -- ++(0,-\cubey,0) -- ++(0,0,\cubez) -- cycle;
+\draw[black] (0,0,0) -- ++(-\cubex,0,0) -- ++(0,0,-\cubez) -- ++(\cubex,0,0) -- cycle;
+\draw[black, dashed] (-\cubex, -\cubey, -\cubez) -- ++(\cubex, 0, 0);
+\draw[black, dashed] (-\cubex, -\cubey, 0) -- ++(0,0,-\cubez) -- ++(0,\cubey,0);
+\end{tikzpicture}
